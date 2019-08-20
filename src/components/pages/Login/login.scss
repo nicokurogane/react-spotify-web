@@ -1,0 +1,15 @@
+@import '../../../css/variables';
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1b1b1b;
+
+  .logo {
+    width: 150px;
+    height: 75px;
+  }
+}
