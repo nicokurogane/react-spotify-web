@@ -1,5 +1,6 @@
 import React from 'react';
 import LayoutApp from '../../layout-app/LayoutApp';
+import CustomLink from '../../custom-link/CustomLink';
 
 import './home.scss';
 import spotifyLogo from '../../../assets/Spotify_logo_with_text.svg';
@@ -19,6 +20,9 @@ const Home = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
+            <div>
+              <CustomLink targetUrl={'/login'} text={'Login'} />
+            </div>
           </div>
         </div>
       </LayoutApp>
