@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
 
-function App() {
-  return <div className="App">app component</div>;
-}
+const App = props => {
+  return <div className="App">{props.children}</div>;
+};
 
 export default App;
