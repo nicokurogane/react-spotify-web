@@ -1,0 +1,14 @@
+.item-card-container {
+  display: inline-block;
+
+  .image {
+    height: 35vh;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

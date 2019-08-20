@@ -1,4 +1,5 @@
 import React from 'react';
+import LocalStorageHandler from '../../../data/local-storage-handler/LocalStorageHandler';
 
 import spotifyLogo from '../../../assets/Spotify_logo_with_text.svg';
 import './login.scss';
@@ -6,7 +7,7 @@ import './login.scss';
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = 'eff204b0eda141e094cde9ad28d5fa34';
+const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = 'http://localhost:3000/login';
 const scopes = [
   'user-top-read',
@@ -37,6 +38,10 @@ class Login extends React.Component {
     // Set token
     let _token = hash.access_token;
     if (_token) {
+      console.log(this.props);
+      console.log(`received token: ${_token}`);
+      LocalStorageHandler.saveAuthToken(_token);
+      this.props.history.push('/main');
       // Set token
       this.setState({
         token: _token
@@ -44,7 +49,6 @@ class Login extends React.Component {
     }
   }
   render() {
-    console.log(process.env.REACT_APP_CLIENT_ID);
     return (
       <div className="login-container">
         <img src={spotifyLogo} alt="spotify" className="logo" />
