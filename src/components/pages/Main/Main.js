@@ -9,19 +9,23 @@ const Main = () => {
       <LayoutApp>
         <div>MAIN PAGE</div>
         <div>
-          <ItemCard
-            imageUrl="https://smhttp-ssl-73418.nexcesscdn.net/tech/en/wp-content/uploads/sites/2/2019/07/gorillaz-cover.jpg"
-            title="Humanz"
-            subtitle="Gorillaz"
-          />
+          <Row>
+            <Col span={6}>
+              <ItemCard
+                imageUrl="https://smhttp-ssl-73418.nexcesscdn.net/tech/en/wp-content/uploads/sites/2/2019/07/gorillaz-cover.jpg"
+                title="Humanz"
+                subtitle="Gorillaz"
+              />
+            </Col>
 
-          {/*   <Col span={6}>
+            <Col span={6}>
               <ItemCard
                 imageUrl="https://www.24-horas.mx/wp-content/uploads/2019/02/levi-gorillaz-min.jpg"
-                title="NOMBRE ARTISTA 2"
-                subtitle="NOMBRE ALBUM 2"
+                title="The NOW NOW"
+                subtitle="Gorillaz"
               />
-            </Col>*/}
+            </Col>
+          </Row>
         </div>
       </LayoutApp>
     </div>
