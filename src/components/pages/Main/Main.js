@@ -1,25 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAlbums } from '../../../actions/albums';
-import { Row, Col } from 'antd';
+import { fetchAlbums, fetchAlbumsBySearchTerm } from '../../../actions/albums';
 import LayoutApp from '../../layout-app/LayoutApp';
-import ItemCard from '../../item-card/ItemCard';
 import AlbumList from '../../albums/List';
 
 class ConnectedMain extends React.Component {
   componentDidMount() {
-    this.props.fetchAlbums();
+    // this.props.fetchAlbums();
+    this.props.fetchAlbumsBySearchTerm('a');
   }
 
   render() {
-    const { albums = [] } = this.props.albums;
-
     return (
       <div className="main-page-container">
         <LayoutApp>
           <div>MAIN PAGE</div>
           <div>
-            <AlbumList albums={albums} />
+            <AlbumList albums={this.props.albums} />
           </div>
         </LayoutApp>
       </div>
@@ -35,7 +32,7 @@ const mapStateToProps = state => {
 
 const Main = connect(
   mapStateToProps,
-  { fetchAlbums }
+  { fetchAlbums, fetchAlbumsBySearchTerm }
 )(ConnectedMain);
 
 export default Main;

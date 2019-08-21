@@ -7,7 +7,6 @@ const initialState = {
 const albumReducers = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALBUMS_LIST:
-      console.log(action.payload);
       return { ...state, list: action.payload };
     default:
       return state;
