@@ -3,6 +3,8 @@ import { Row, Col } from 'antd';
 import LayoutApp from '../../layout-app/LayoutApp';
 import ItemCard from '../../item-card/ItemCard';
 
+import { getAlbums } from '../../../data/network-utils/spotify/albums';
+
 const Main = () => {
   return (
     <div className="main-page-container">
@@ -31,5 +33,7 @@ const Main = () => {
     </div>
   );
 };
+
+//  getAlbums().then(response => console.log(response.data));
 
 export default Main;
