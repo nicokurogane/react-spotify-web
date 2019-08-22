@@ -6,8 +6,8 @@ const ItemCard = ({ imageUrl, title, subtitle }) => {
     <div className="item-card-container">
       <img src={imageUrl} alt="item" className="image" />
       <div className="info-container">
-        <span className="title">{title} </span>
-        <span className="subtitle"> {subtitle}</span>
+        <span className="title adaptive-text">{title} </span>
+        <span className="subtitle adaptive-text"> {subtitle}</span>
       </div>
     </div>
   );

@@ -14,3 +14,8 @@ export const getAlbumsByTerm = async (term, offset = 0, limit = 20) => {
   );
   return serverResponse;
 };
+
+export const getAlbumById = async id => {
+  let serverResponse = await spotifyClient.get(`albums/${id}`);
+  return serverResponse;
+};

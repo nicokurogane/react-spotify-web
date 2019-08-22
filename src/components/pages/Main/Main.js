@@ -11,7 +11,6 @@ class ConnectedMain extends React.Component {
   }
 
   onChangeClick = offset => {
-    // console.log('onChange de Main: offset: ' + offset);
     this.props.fetchAlbumsBySearchTerm('a', offset);
   };
 
@@ -19,7 +18,6 @@ class ConnectedMain extends React.Component {
     return (
       <div className="main-page-container">
         <LayoutApp>
-          <div>MAIN PAGE</div>
           <div>
             <AlbumList albums={this.props.albums} />
           </div>

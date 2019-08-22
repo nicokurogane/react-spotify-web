@@ -12,6 +12,7 @@ import App from './components/App';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Main from './components/pages/Main/Main';
+import AlbumDetail from './components/pages/AlbumDetail/AlbumDetail';
 
 import 'antd/dist/antd.css';
 
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/main" exact component={Main} />
+          <Route path="/album-detail/:id" component={AlbumDetail} />
           <Route path="/" exact component={Home} />
         </Switch>
       </App>

@@ -1,0 +1,25 @@
+@import '../../../css/variables';
+
+.album-detail-container {
+  background-color: $secondary-color;
+  color: $font-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+
+  .main-panel {
+    .carousel-img {
+      height: 30vh;
+    }
+
+    .ant-carousel .slick-slide {
+      text-align: center;
+      height: 160px;
+      line-height: 160px;
+      background: #364d79;
+      overflow: hidden;
+    }
+  }
+}
