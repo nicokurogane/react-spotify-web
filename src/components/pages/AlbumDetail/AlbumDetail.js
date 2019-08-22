@@ -20,7 +20,7 @@ class ConnectedAlbumDetail extends React.Component {
       external_urls = {},
       tracks = {},
       images = [],
-      release_date
+      release_date = ''
     } = this.props.album;
 
     return (
@@ -58,7 +58,12 @@ class ConnectedAlbumDetail extends React.Component {
                   </a>
                 </div>
                 <div className="detail-container">
-                  <CustomLink targetUrl={'/'} text="Artist details" />
+                  <CustomLink
+                    targetUrl={`/artist-detail/${
+                      artists.length > 0 ? artists[0].id : 0
+                    }`}
+                    text="Artist details"
+                  />
                 </div>
               </Card>
             </Col>
