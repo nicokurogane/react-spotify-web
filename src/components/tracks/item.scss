@@ -6,9 +6,11 @@
   display: flex;
   justify-content: space-between;
   transition: background-color 0.2s ease-in-out;
-  border-bottom: 1px #ffffff solid;
+  border: 1px transparent solid;
 
   &:hover {
     background-color: $primary-color;
+    border-bottom: 1px $dark-accent-color solid;
+    border-top: 1px $dark-accent-color solid;
   }
 }

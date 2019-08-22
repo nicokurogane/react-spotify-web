@@ -46,7 +46,7 @@ class ConnectedAlbumDetail extends React.Component {
                   {artists.length > 0 ? artists[0].name : null}
                 </div>
                 <div className="detail-container">
-                  {new Date(release_date).getFullYear}
+                  {new Date(release_date).getFullYear()}
                 </div>
                 <div className="detail-container">
                   <a
