@@ -10,16 +10,14 @@
   height: 100vh;
 
   .main-panel {
+    width: 100%;
+    padding: 0 45vh;
     .carousel-img {
-      height: 30vh;
+      height: 40vh;
     }
+  }
 
-    .ant-carousel .slick-slide {
-      text-align: center;
-      height: 160px;
-      line-height: 160px;
-      background: #364d79;
-      overflow: hidden;
-    }
+  .detail-container {
+    margin-top: 5.5vh;
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAlbumDetailsById } from '../../../actions/albums';
-import { Carousel } from 'antd';
+import { Row, Col, Card } from 'antd';
+import CustomLink from '../../custom-link/CustomLink';
 
 import './album-detail.scss';
 
@@ -12,15 +13,51 @@ class ConnectedAlbumDetail extends React.Component {
   }
 
   render() {
-    const { images = [] } = this.props.album;
+    const {
+      name,
+      artists = [],
+      external_urls = {},
+      tracks = [],
+      images = []
+    } = this.props.album;
+
     return (
       <div className="album-detail-container">
         <div className="main-panel">
-          <div>
-            {images.length > 0 ? (
-              <img src={images[0].url} alt="album" className="carousel-img" />
-            ) : null}
-          </div>
+          <Row type="flex" justify="center">
+            <Col span={12}>
+              {images.length > 0 ? (
+                <img src={images[0].url} alt="album" className="carousel-img" />
+              ) : null}
+            </Col>
+            <Col span={12}>
+              <Card
+                style={{
+                  color: '#ffffff',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  padding: '0'
+                }}
+              >
+                <div>{name}</div>
+                <div className="detail-container">
+                  {artists.length > 0 ? artists[0].name : null}
+                </div>
+                <div className="detail-container">
+                  <a
+                    href={external_urls.spotify}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {external_urls.spotify}
+                  </a>
+                </div>
+                <div className="detail-container">
+                  <CustomLink targetUrl={'/'} text="Artist details" />
+                </div>
+              </Card>
+            </Col>
+          </Row>
         </div>
         <div className="tracklist-panel">tracklist</div>
       </div>
