@@ -10,5 +10,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .title {
+      overflow: hidden;
+      max-width: 25vh;
+      position: relative;
+      white-space: nowrap;
+    }
   }
 }

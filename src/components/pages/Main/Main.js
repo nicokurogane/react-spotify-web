@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import { fetchAlbums, fetchAlbumsBySearchTerm } from '../../../actions/albums';
 import LayoutApp from '../../layout-app/LayoutApp';
 import AlbumList from '../../albums/List';
+import Paginator from '../../paginator/Paginator';
 
 class ConnectedMain extends React.Component {
   componentDidMount() {
-    // this.props.fetchAlbums();
     this.props.fetchAlbumsBySearchTerm('a');
   }
+
+  onChangeClick = offset => {
+    // console.log('onChange de Main: offset: ' + offset);
+    this.props.fetchAlbumsBySearchTerm('a', offset);
+  };
 
   render() {
     return (
@@ -18,6 +23,7 @@ class ConnectedMain extends React.Component {
           <div>
             <AlbumList albums={this.props.albums} />
           </div>
+          <Paginator onChangeClick={this.onChangeClick} limit={20} />
         </LayoutApp>
       </div>
     );

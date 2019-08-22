@@ -8,7 +8,9 @@ export const getAlbums = async () => {
   return serverResponse;
 };
 
-export const getAlbumsByTerm = async term => {
-  let serverResponse = await spotifyClient.get(`/search?q=${term}*&type=album`);
+export const getAlbumsByTerm = async (term, offset = 0, limit = 20) => {
+  let serverResponse = await spotifyClient.get(
+    `/search?q=${term}*&type=album&offset=${offset}&limit=${limit}`
+  );
   return serverResponse;
 };

@@ -14,9 +14,10 @@ export const fetchAlbums = () => async dispatch => {
     });
 };
 
-export const fetchAlbumsBySearchTerm = term => async dispatch => {
-  await getAlbumsByTerm(term)
+export const fetchAlbumsBySearchTerm = (term, offset = 0) => async dispatch => {
+  await getAlbumsByTerm(term, offset)
     .then(response => {
+      console.log(response);
       dispatch({
         type: FETCH_ALBUMS_LIST,
         payload: response.data.albums.items
