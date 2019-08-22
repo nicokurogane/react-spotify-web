@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import ItemCard from '../item-card/ItemCard';
-import CustomLink from '../custom-link/CustomLink';
+import ItemCard from '../../item-card/ItemCard';
+import CustomLink from '../../custom-link/CustomLink';
 
 import './list.scss';
 

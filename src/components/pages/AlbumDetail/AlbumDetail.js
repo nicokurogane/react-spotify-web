@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAlbumDetailsById } from '../../../actions/albums';
 import { Row, Col, Card } from 'antd';
 import CustomLink from '../../custom-link/CustomLink';
+import TrackList from '../../tracks/List';
+import { fetchAlbumDetailsById } from '../../../actions/albums';
 
 import './album-detail.scss';
 
@@ -17,8 +18,9 @@ class ConnectedAlbumDetail extends React.Component {
       name,
       artists = [],
       external_urls = {},
-      tracks = [],
-      images = []
+      tracks = {},
+      images = [],
+      release_date
     } = this.props.album;
 
     return (
@@ -44,6 +46,9 @@ class ConnectedAlbumDetail extends React.Component {
                   {artists.length > 0 ? artists[0].name : null}
                 </div>
                 <div className="detail-container">
+                  {new Date(release_date).getFullYear}
+                </div>
+                <div className="detail-container">
                   <a
                     href={external_urls.spotify}
                     target="_blank"
@@ -59,7 +64,9 @@ class ConnectedAlbumDetail extends React.Component {
             </Col>
           </Row>
         </div>
-        <div className="tracklist-panel">tracklist</div>
+        <div className="tracklist-panel">
+          <TrackList tracks={tracks.items} />
+        </div>
       </div>
     );
   }

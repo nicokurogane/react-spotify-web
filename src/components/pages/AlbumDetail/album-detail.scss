@@ -5,9 +5,11 @@
   color: $font-color;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 
   .main-panel {
     width: 100%;
@@ -17,6 +19,10 @@
     }
   }
 
+  .tracklist-panel {
+    width: 70%;
+    margin-top: 10vh;
+  }
   .detail-container {
     margin-top: 5.5vh;
   }

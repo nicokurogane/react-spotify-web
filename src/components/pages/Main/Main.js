@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAlbums, fetchAlbumsBySearchTerm } from '../../../actions/albums';
 import LayoutApp from '../../layout-app/LayoutApp';
-import AlbumList from '../../albums/List';
+import AlbumList from '../../albums/list/List';
 import Paginator from '../../paginator/Paginator';
 
 class ConnectedMain extends React.Component {
