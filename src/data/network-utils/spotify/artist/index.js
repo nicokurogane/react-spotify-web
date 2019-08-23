@@ -11,3 +11,8 @@ export const getArtistTopTracks = async id => {
   );
   return serverResponse;
 };
+
+export const getArtistRelatedArtists = async id => {
+  let serverResponse = await spotifyClient.get(`artists/${id}/related-artists`);
+  return serverResponse;
+};
