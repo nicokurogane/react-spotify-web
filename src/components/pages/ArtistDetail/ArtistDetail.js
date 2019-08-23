@@ -5,6 +5,9 @@ import {
   fetchArtistTopTracks,
   fetchArtistRelatedArtist
 } from '../../../actions/artists';
+import GenresList from '../../artist/genres-list/GenresList';
+import RelatedArtistList from '../../artist/related-artist-list/RelatedArtistsList';
+import TopTracksList from '../../artist/top-tracks-list/TopTracksList';
 
 import './artist-detail.scss';
 
@@ -33,31 +36,11 @@ class ConnectedArtistDetail extends React.Component {
           {images.length > 0 ? <img src={images[1].url} alt={name} /> : null}
         </span>
         <div>
-          genre:
-          {genres.map(genre => (
-            <span>{genre}</span>
-          ))}
-        </div>
-        <div>
           top tracks:
-          {topTracks.map(track => {
-            const { name, popularity } = track;
-            return <div>{`${name}, ${popularity}`}</div>;
-          })}
+          <TopTracksList tracks={topTracks} />
         </div>
-
-        <div>
-          related artist:
-          {relatedArtists.map(artist => {
-            const { name, images } = artist;
-            return (
-              <div>
-                <span>{name}</span>
-                <img src={images[0].url} />
-              </div>
-            );
-          })}
-        </div>
+        <GenresList genres={genres} />
+        <RelatedArtistList artists={relatedArtists} />
       </div>
     );
   }

@@ -1,0 +1,12 @@
+.related-artist-list-container {
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .artists {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
