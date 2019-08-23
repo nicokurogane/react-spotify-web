@@ -4,3 +4,10 @@ export const getArtistById = async id => {
   let serverResponse = await spotifyClient.get(`artists/${id}`);
   return serverResponse;
 };
+
+export const getArtistTopTracks = async id => {
+  let serverResponse = await spotifyClient.get(
+    `artists/${id}/top-tracks?country=SV`
+  );
+  return serverResponse;
+};
