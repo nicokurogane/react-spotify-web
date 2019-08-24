@@ -1,0 +1,14 @@
+@import '../../../css/variables';
+
+.search-bar-container {
+  .ant-input-search-button {
+    background-color: $accent-color;
+  }
+
+  .ant-btn-primary {
+    border-color: $accent-color;
+    &:hover {
+      background-color: $dark-accent-color;
+    }
+  }
+}
