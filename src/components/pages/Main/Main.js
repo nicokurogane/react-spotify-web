@@ -4,6 +4,9 @@ import { fetchAlbums, fetchAlbumsBySearchTerm } from '../../../actions/albums';
 import LayoutApp from '../../layout-app/LayoutApp';
 import AlbumList from '../../albums/list/List';
 import Paginator from '../../paginator/Paginator';
+import SearchBar from '../../albums/search-bar/SearchBar';
+
+import './main.scss';
 
 class ConnectedMain extends React.Component {
   componentDidMount() {
@@ -18,6 +21,9 @@ class ConnectedMain extends React.Component {
     return (
       <div className="main-page-container">
         <LayoutApp>
+          <div className="search-bar">
+            <SearchBar />
+          </div>
           <div>
             <AlbumList albums={this.props.albums} />
           </div>
