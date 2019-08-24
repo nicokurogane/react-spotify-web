@@ -1,0 +1,14 @@
+@import '../../css/variables';
+
+.profile-avatar-container {
+  .button-avatar {
+    border: none;
+    background-color: $primary-color;
+    transition: background-color 0.2s ease-in-out;
+    height: 100%;
+
+    &:focus {
+      background-color: $accent-color;
+    }
+  }
+}
