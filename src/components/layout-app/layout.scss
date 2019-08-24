@@ -11,6 +11,10 @@
       background-color: $primary-color;
       display: flex;
       justify-content: space-between;
+
+      .header-logo {
+        height: 4vh;
+      }
     }
 
     .content {

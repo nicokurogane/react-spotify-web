@@ -1,10 +1,13 @@
 import React from 'react';
 import LayoutApp from '../../layout-app/LayoutApp';
+import UserInfoDetail from '../../user/detail/Detail';
 
 const UserDetail = () => {
   return (
     <LayoutApp>
-      <div className="user-detail-container"></div>
+      <div className="page-user-detail-container">
+        <UserInfoDetail />
+      </div>
     </LayoutApp>
   );
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
-import ProfileAvatar from '../user/ProfileAvatar';
+import ProfileAvatar from '../user/profile-avatar/ProfileAvatar';
+
+import spotifyLogo from '../../assets/Spotify_logo_with_text.svg';
 
 import './layout.scss';
 
@@ -11,7 +13,9 @@ const LayoutApp = ({ children }) => {
     <div className="layout-container">
       <Layout className="main-container">
         <Header className="app-header">
-          <div>LOGO</div>
+          <div>
+            <img src={spotifyLogo} className="header-logo" alt="header logo" />
+          </div>
           <ProfileAvatar />
         </Header>
         <Content className="content">{children}</Content>

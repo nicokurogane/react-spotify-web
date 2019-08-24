@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchLoggedInUserInfo } from '../../actions/users';
+import { fetchLoggedInUserInfo } from '../../../actions/users';
 import { Avatar } from 'antd';
-import HoverCard from '../hover-card/HoverCard';
+import HoverCard from '../../hover-card/HoverCard';
 
 import './profile-avatar.scss';
 
@@ -16,14 +16,12 @@ class ConnectedProfileAvatar extends React.Component {
   }
 
   onClickAvatar = () => {
-    console.log('avatar click');
     this.setState({
       showCard: !this.state.showCard
     });
   };
 
   render() {
-    console.log(this.props.user);
     const { display_name, images = [], email } = this.props.user;
     return (
       <div className="profile-avatar-container">
