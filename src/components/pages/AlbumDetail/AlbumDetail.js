@@ -4,6 +4,7 @@ import { Row, Col, Card } from 'antd';
 import CustomLink from '../../custom-link/CustomLink';
 import TrackList from '../../tracks/List';
 import { fetchAlbumDetailsById } from '../../../actions/albums';
+import TitleSection from '../../title-section/TitleSection';
 
 import './album-detail.scss';
 
@@ -25,6 +26,7 @@ class ConnectedAlbumDetail extends React.Component {
 
     return (
       <div className="album-detail-container">
+        <TitleSection title={'Album Detail'} />
         <div className="main-panel">
           <Row type="flex" justify="center">
             <Col span={12}>

@@ -8,6 +8,7 @@ import {
 import GenresList from '../../artist/genres-list/GenresList';
 import RelatedArtistList from '../../artist/related-artist-list/RelatedArtistsList';
 import TopTracksList from '../../artist/top-tracks-list/TopTracksList';
+import TitleSection from '../../title-section/TitleSection';
 
 import './artist-detail.scss';
 
@@ -31,11 +32,14 @@ class ConnectedArtistDetail extends React.Component {
     const { topTracks, relatedArtists } = this.props;
     return (
       <div className="artist-detail-container">
+        <TitleSection title={'Artist Detail'} />
         <div className="basic-info-container">
           <div>
-            {images.length > 0 ? <img src={images[1].url} alt={name} /> : null}
+            {images.length > 0 ? (
+              <img src={images[1].url} alt={name} className="artist-img" />
+            ) : null}
           </div>
-          <div>
+          <div className="artist-info">
             <span>{name}</span>
             <GenresList genres={genres} />
             <TopTracksList tracks={topTracks} />

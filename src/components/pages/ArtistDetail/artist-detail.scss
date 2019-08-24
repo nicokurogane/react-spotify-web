@@ -5,9 +5,29 @@
   color: #ffffff;
   height: 100%;
 
+  .title-section {
+    padding-left: 12vh;
+    padding-right: 12vh;
+    padding-top: 12vh;
+    color: #ffffff;
+  }
+
   .basic-info-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 12vh;
+    margin-bottom: 12vh;
+    height: 100vh;
+
+    .artist-img {
+      height: 70vh;
+      margin-right: 25vh;
+    }
+
+    .artist-info {
+      height: 70vh;
+    }
   }
 }

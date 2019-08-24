@@ -24,7 +24,7 @@ const TopTracksList = ({ tracks }) => {
 
   return (
     <div className="top-tracks-list-container">
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} size="small" />
       {/*
    
     
