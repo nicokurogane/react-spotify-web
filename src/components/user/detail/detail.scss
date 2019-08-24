@@ -6,6 +6,23 @@
 
   .section {
     margin: 6vh 12vh 0 12vh;
+
+    .ant-descriptions-row {
+      border-bottom: 1px transparent solid;
+      transition: all 0.2s ease-in-out;
+      .ant-descriptions-item-label {
+        font-weight: 600;
+        color: $font-color;
+      }
+      .ant-descriptions-item-content {
+        color: $font-color;
+      }
+
+      &:hover {
+        background-color: $primary-color;
+        border-bottom: 1px $accent-color solid;
+      }
+    }
   }
   .main-info {
     display: flex;
@@ -17,8 +34,4 @@
       font-size: 2rem;
     }
   }
-}
-
-.test {
-  color: $font-color;
 }

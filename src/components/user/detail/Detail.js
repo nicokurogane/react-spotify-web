@@ -46,10 +46,11 @@ class ConnectedDetail extends React.Component {
             <Descriptions.Item label="Email">{email}</Descriptions.Item>
 
             <Descriptions.Item label="Country">{country}</Descriptions.Item>
+
+            <Descriptions.Item label="Product">{product}</Descriptions.Item>
             <Descriptions.Item label="Followers">
               {followers.total}
             </Descriptions.Item>
-            <Descriptions.Item label="Product">{product}</Descriptions.Item>
             <Descriptions.Item label="Web url">
               <a
                 href={external_urls.spotify}
