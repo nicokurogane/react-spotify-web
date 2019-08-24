@@ -14,6 +14,7 @@ import Login from './components/pages/Login/Login';
 import Main from './components/pages/Main/Main';
 import AlbumDetail from './components/pages/AlbumDetail/AlbumDetail';
 import ArtistDetail from './components/pages/ArtistDetail/ArtistDetail';
+import UserDetail from './components/pages/UserDetail/UserDetail';
 
 import 'antd/dist/antd.css';
 
@@ -33,6 +34,7 @@ ReactDOM.render(
           <Route path="/main" exact component={Main} />
           <Route path="/album-detail/:id" component={AlbumDetail} />
           <Route path="/artist-detail/:id" component={ArtistDetail} />
+          <Route path="/user-detail" component={UserDetail} />
           <Route path="/" exact component={Home} />
         </Switch>
       </App>
