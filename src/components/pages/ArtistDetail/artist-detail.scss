@@ -4,4 +4,10 @@
   background-color: $secondary-color;
   color: #ffffff;
   height: 100%;
+
+  .basic-info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

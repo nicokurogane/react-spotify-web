@@ -31,15 +31,17 @@ class ConnectedArtistDetail extends React.Component {
     const { topTracks, relatedArtists } = this.props;
     return (
       <div className="artist-detail-container">
-        <span>{name}</span>
-        <span>
-          {images.length > 0 ? <img src={images[1].url} alt={name} /> : null}
-        </span>
-        <div>
-          top tracks:
-          <TopTracksList tracks={topTracks} />
+        <div className="basic-info-container">
+          <div>
+            {images.length > 0 ? <img src={images[1].url} alt={name} /> : null}
+          </div>
+          <div>
+            <span>{name}</span>
+            <GenresList genres={genres} />
+            <TopTracksList tracks={topTracks} />
+          </div>
         </div>
-        <GenresList genres={genres} />
+
         <RelatedArtistList artists={relatedArtists} />
       </div>
     );
