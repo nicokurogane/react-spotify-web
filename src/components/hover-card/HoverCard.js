@@ -7,7 +7,13 @@ import './hover-card.scss';
 const HoverCard = ({ showCard, displayName, email }) => {
   return (
     <div className="hover-card-container">
-      <Card className="hover-card" style={{ opacity: showCard ? '1' : '0' }}>
+      <Card
+        className="hover-card"
+        style={{
+          opacity: showCard ? '1' : '0',
+          zIndex: showCard ? '100' : '-100'
+        }}
+      >
         <div>{displayName}</div>
         <div>{email}</div>
         <div>
