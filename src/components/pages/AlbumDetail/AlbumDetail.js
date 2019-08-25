@@ -5,6 +5,7 @@ import CustomLink from '../../custom-link/CustomLink';
 import TrackList from '../../tracks/List';
 import { fetchAlbumDetailsById } from '../../../actions/albums';
 import TitleSection from '../../title-section/TitleSection';
+import LoadingSpinner from '../../loading-spinner/LoadingSpinner';
 
 import './album-detail.scss';
 
@@ -14,7 +15,22 @@ class ConnectedAlbumDetail extends React.Component {
     fetchAlbumDetailsById(match.params.id);
   }
 
-  render() {
+  renderLoadingSpinner = () => {
+    return (
+      <LoadingSpinner
+        isLoading={this.props.isLoadingAlbum}
+        className="loading-spinner"
+      />
+    );
+  };
+
+  renderErrorPage = () => {
+    return (
+      <div>Couldn't get album detail :(. check your internet connection</div>
+    );
+  };
+
+  renderAlbumDetail = () => {
     const {
       name,
       artists = [],
@@ -25,7 +41,7 @@ class ConnectedAlbumDetail extends React.Component {
     } = this.props.album;
 
     return (
-      <div className="album-detail-container">
+      <>
         <TitleSection title={'Album Detail'} />
         <div className="main-panel">
           <Row type="flex" justify="center">
@@ -74,13 +90,28 @@ class ConnectedAlbumDetail extends React.Component {
         <div className="tracklist-panel">
           <TrackList tracks={tracks.items} />
         </div>
+      </>
+    );
+  };
+
+  render() {
+    const { isLoadingAlbum, album } = this.props;
+
+    return (
+      <div className="album-detail-container">
+        {isLoadingAlbum
+          ? this.renderLoadingSpinner()
+          : !isLoadingAlbum && Object.getOwnPropertyNames(album).length === 0
+          ? this.renderErrorPage()
+          : this.renderAlbumDetail()}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  album: state.albums.selected
+  album: state.albums.selected,
+  isLoadingAlbum: state.albums.isLoadingAlbums
 });
 
 const AlbumDetail = connect(

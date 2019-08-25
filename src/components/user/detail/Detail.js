@@ -44,9 +44,7 @@ class ConnectedDetail extends React.Component {
             column={{ xxl: 3, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }}
           >
             <Descriptions.Item label="Email">{email}</Descriptions.Item>
-
             <Descriptions.Item label="Country">{country}</Descriptions.Item>
-
             <Descriptions.Item label="Product">{product}</Descriptions.Item>
             <Descriptions.Item label="Followers">
               {followers.total}

@@ -34,6 +34,7 @@ export const fetchAlbumsBySearchTerm = (term, offset = 0) => async dispatch => {
 };
 
 export const fetchAlbumDetailsById = id => async dispatch => {
+  dispatch({ type: constants.LOADING_ALBUMS });
   await requests
     .getAlbumById(id)
     .then(response => {
@@ -41,6 +42,7 @@ export const fetchAlbumDetailsById = id => async dispatch => {
     })
     .catch(err => {
       console.log(err);
+      dispatch({ type: constants.LOADING_ALBUMS_FAILED });
     });
 };
 

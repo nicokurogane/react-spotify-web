@@ -12,7 +12,7 @@ const albumReducers = (state = initialState, action) => {
     case constants.FETCH_ALBUMS_LIST_SUCCEDED:
       return { ...state, list: action.payload, isLoadingAlbums: false };
     case constants.FETCH_SINGLE_ALBUM:
-      return { ...state, selected: action.payload };
+      return { ...state, selected: action.payload, isLoadingAlbums: false };
     case constants.UPDATE_SEARCH_TERM:
       return { ...state, searchTerm: action.payload };
     case constants.LOADING_ALBUMS:
