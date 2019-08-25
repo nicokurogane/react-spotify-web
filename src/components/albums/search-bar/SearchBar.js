@@ -1,10 +1,7 @@
 import React from 'react';
 import { Input } from 'antd';
 import { connect } from 'react-redux';
-import {
-  fetchAlbumsBySearchTerm,
-  updateSearchAlbumTerm
-} from '../../../actions/albums';
+import * as actions from '../../../actions/albums';
 
 import './search-bar.scss';
 
@@ -41,8 +38,10 @@ class ConnectedSearchBar extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateSearchTerm: searchTerm => dispatch(updateSearchAlbumTerm(searchTerm)),
-  fetchNewAlbumList: searchTerm => dispatch(fetchAlbumsBySearchTerm(searchTerm))
+  updateSearchTerm: searchTerm =>
+    dispatch(actions.updateSearchAlbumTerm(searchTerm)),
+  fetchNewAlbumList: searchTerm =>
+    dispatch(actions.fetchAlbumsBySearchTerm(searchTerm))
 });
 
 const SearchBar = connect(

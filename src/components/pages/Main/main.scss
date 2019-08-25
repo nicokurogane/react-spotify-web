@@ -1,5 +1,13 @@
 .main-page-container {
   .search-bar {
     margin: 5vh 9.5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    .side-loading-spinner {
+      height: 5vh;
+      width: 5vh;
+    }
   }
 }
