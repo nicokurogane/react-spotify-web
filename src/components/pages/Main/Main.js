@@ -16,7 +16,9 @@ class ConnectedMain extends React.Component {
 
   onChangeClick = offset => {
     const { fetchAlbumsList, searchTerm } = this.props;
-    fetchAlbumsList(searchTerm, offset);
+    let term = searchTerm === '' ? 'a' : searchTerm;
+    console.log(`llamamos onChangeClick ${term} ${offset}`);
+    fetchAlbumsList(term, offset);
   };
 
   render() {
@@ -50,8 +52,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAlbumsList: searchTerm =>
-    dispatch(actions.fetchAlbumsBySearchTerm(searchTerm))
+  fetchAlbumsList: (searchTerm, offset = 0) =>
+    dispatch(actions.fetchAlbumsBySearchTerm(searchTerm, offset))
 });
 
 const Main = connect(

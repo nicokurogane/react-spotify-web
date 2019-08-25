@@ -16,7 +16,6 @@ class Paginator extends React.Component {
     this.setState({
       current: page
     });
-
     onChangeClick(offset);
   };
 
