@@ -14,7 +14,7 @@ class ConnectedMain extends React.Component {
   }
 
   onChangeClick = offset => {
-    this.props.fetchAlbumsBySearchTerm('a', offset);
+    this.props.fetchAlbumsBySearchTerm(this.props.searchTerm, offset);
   };
 
   render() {
@@ -36,7 +36,8 @@ class ConnectedMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    albums: state.albums.list
+    albums: state.albums.list,
+    searchTerm: state.albums.searchTerm
   };
 };
 

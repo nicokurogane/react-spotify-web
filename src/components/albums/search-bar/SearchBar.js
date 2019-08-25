@@ -1,7 +1,10 @@
 import React from 'react';
 import { Input } from 'antd';
 import { connect } from 'react-redux';
-import { fetchAlbumsBySearchTerm } from '../../../actions/albums';
+import {
+  fetchAlbumsBySearchTerm,
+  updateSearchAlbumTerm
+} from '../../../actions/albums';
 
 import './search-bar.scss';
 
@@ -9,6 +12,7 @@ const { Search } = Input;
 
 class ConnectedSearchBar extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <div className="search-bar-container">
         <Search
@@ -30,13 +34,21 @@ class ConnectedSearchBar extends React.Component {
   };
 
   setSearchTerm = this.debounce(searchTerm => {
-    this.props.fetchAlbumsBySearchTerm(searchTerm);
+    const { fetchNewAlbumList, updateSearchTerm } = this.props;
+    let term = searchTerm !== '' ? searchTerm : 'a';
+    updateSearchTerm(term);
+    fetchNewAlbumList(term);
   }, 700);
 }
 
+const mapDispatchToProps = dispatch => ({
+  updateSearchTerm: searchTerm => dispatch(updateSearchAlbumTerm(searchTerm)),
+  fetchNewAlbumList: searchTerm => dispatch(fetchAlbumsBySearchTerm(searchTerm))
+});
+
 const SearchBar = connect(
   null,
-  { fetchAlbumsBySearchTerm }
+  mapDispatchToProps
 )(ConnectedSearchBar);
 
 export default SearchBar;

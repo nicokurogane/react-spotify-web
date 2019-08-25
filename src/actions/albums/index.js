@@ -1,4 +1,8 @@
-import { FETCH_ALBUMS_LIST, FETCH_SINGLE_ALBUM } from './actionType';
+import {
+  FETCH_ALBUMS_LIST,
+  FETCH_SINGLE_ALBUM,
+  UPDATE_SEARCH_TERM
+} from './actionType';
 import {
   getAlbums,
   getAlbumsByTerm,
@@ -37,4 +41,8 @@ export const fetchAlbumDetailsById = id => async dispatch => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const updateSearchAlbumTerm = term => {
+  return { type: UPDATE_SEARCH_TERM, payload: term };
 };
