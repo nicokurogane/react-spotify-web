@@ -1,9 +1,27 @@
+@import '../../../css/variables';
+
 .album-list-container {
   .item-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 2vh;
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      position: absolute;
+      z-index: 200;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

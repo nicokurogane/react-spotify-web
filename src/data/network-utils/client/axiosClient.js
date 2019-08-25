@@ -33,7 +33,6 @@ const getClient = (baseUrl = null) => {
       }
 
       console.log(`error en la respusta  ${answer}`);
-
       return Promise.reject(error);
     }
   );

@@ -8,22 +8,24 @@ import './list.scss';
 const List = ({ albums }) => {
   return (
     <div className="album-list-container">
-      <Row>
+      <Row type="flex" justify="space-around">
         {albums.map(album => {
           const { id, name, artists, images } = album;
 
           return (
-            <Col span={6} key={id}>
+            <Col key={id}>
               <div className="item-content">
                 <ItemCard
                   imageUrl={images[0].url}
                   title={name}
                   subtitle={artists[0].name}
                 />
-                <CustomLink
-                  targetUrl={`/album-detail/${id}`}
-                  text={'Details'}
-                />
+                <div className="overlay">
+                  <CustomLink
+                    targetUrl={`/album-detail/${id}`}
+                    text={'Album Details'}
+                  />
+                </div>
               </div>
             </Col>
           );
