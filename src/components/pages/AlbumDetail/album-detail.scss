@@ -30,6 +30,11 @@
   }
 }
 
-.loading-spinner {
-  height: 100%;
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loading-spinner {
+    height: 100%;
+  }
 }

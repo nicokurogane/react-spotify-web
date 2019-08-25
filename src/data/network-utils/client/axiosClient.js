@@ -1,5 +1,7 @@
 import axios from 'axios';
 import LocalStorageHandler from '../../local-storage-handler/LocalStorageHandler';
+import errorHandler from './errorHandler.js';
+import history from '../../../history';
 
 const getClient = (baseUrl = null) => {
   const options = {
@@ -25,9 +27,12 @@ const getClient = (baseUrl = null) => {
   client.interceptors.response.use(
     response => response,
     error => {
-      if (error.response.status !== 500) {
-        console.log(`error en la respusta  ${error}`);
+      let answer = errorHandler(error.response.status);
+      if (answer === '401') {
+        history.push('/login');
       }
+
+      console.log(`error en la respusta  ${answer}`);
 
       return Promise.reject(error);
     }

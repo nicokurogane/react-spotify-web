@@ -17,10 +17,12 @@ class ConnectedAlbumDetail extends React.Component {
 
   renderLoadingSpinner = () => {
     return (
-      <LoadingSpinner
-        isLoading={this.props.isLoadingAlbum}
-        className="loading-spinner"
-      />
+      <div className="loading-spinner-container">
+        <LoadingSpinner
+          isLoading={this.props.isLoadingAlbum}
+          className="loading-spinner"
+        />
+      </div>
     );
   };
 

@@ -7,8 +7,10 @@ import thunk from 'redux-thunk';
 import spotifyReducers from './reducers';
 
 import './index.css';
-import App from './components/App';
 
+import history from './history';
+
+import App from './components/App';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Main from './components/pages/Main/Main';
@@ -27,7 +29,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App>
         <Switch>
           <Route path="/login" exact component={Login} />
