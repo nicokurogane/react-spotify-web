@@ -59,11 +59,11 @@ class ConnectedAlbumDetail extends React.Component {
                   padding: '0'
                 }}
               >
-                <div>{name}</div>
-                <div className="detail-container">
+                <div className="detail">{name}</div>
+                <div className="detail-container detail">
                   {artists.length > 0 ? artists[0].name : null}
                 </div>
-                <div className="detail-container">
+                <div className="detail-container detail">
                   {new Date(release_date).getFullYear()}
                 </div>
                 <div className="detail-container">
