@@ -1,4 +1,4 @@
-import { FETCH_LOGGED_IN_USER } from '../actions/users/actionType';
+import * as constants from '../actions/users/actionType';
 
 const initialState = {
   selected: {}
@@ -6,7 +6,7 @@ const initialState = {
 
 const usersReducers = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_LOGGED_IN_USER:
+    case constants.FETCH_LOGGED_IN_USER:
       return { ...state, selected: action.payload };
     default:
       return state;

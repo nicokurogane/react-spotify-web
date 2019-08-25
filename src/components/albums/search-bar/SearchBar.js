@@ -12,7 +12,6 @@ const { Search } = Input;
 
 class ConnectedSearchBar extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="search-bar-container">
         <Search

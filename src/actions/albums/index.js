@@ -1,18 +1,11 @@
-import {
-  FETCH_ALBUMS_LIST,
-  FETCH_SINGLE_ALBUM,
-  UPDATE_SEARCH_TERM
-} from './actionType';
-import {
-  getAlbums,
-  getAlbumsByTerm,
-  getAlbumById
-} from '../../data/network-utils/spotify/albums';
+import * as constants from './actionType';
+import * as requests from '../../data/network-utils/spotify/albums';
 
 export const fetchAlbums = () => async dispatch => {
-  await getAlbums()
+  await requests
+    .getAlbums()
     .then(response =>
-      dispatch({ type: FETCH_ALBUMS_LIST, payload: response.data })
+      dispatch({ type: constants.FETCH_ALBUMS_LIST, payload: response.data })
     )
     .catch(err => {
       console.log(err);
@@ -20,10 +13,11 @@ export const fetchAlbums = () => async dispatch => {
 };
 
 export const fetchAlbumsBySearchTerm = (term, offset = 0) => async dispatch => {
-  await getAlbumsByTerm(term, offset)
+  await requests
+    .getAlbumsByTerm(term, offset)
     .then(response => {
       dispatch({
-        type: FETCH_ALBUMS_LIST,
+        type: constants.FETCH_ALBUMS_LIST,
         payload: response.data.albums.items
       });
     })
@@ -33,10 +27,10 @@ export const fetchAlbumsBySearchTerm = (term, offset = 0) => async dispatch => {
 };
 
 export const fetchAlbumDetailsById = id => async dispatch => {
-  await getAlbumById(id)
+  await requests
+    .getAlbumById(id)
     .then(response => {
-      console.log(response.data);
-      dispatch({ type: FETCH_SINGLE_ALBUM, payload: response.data });
+      dispatch({ type: constants.FETCH_SINGLE_ALBUM, payload: response.data });
     })
     .catch(err => {
       console.log(err);
@@ -44,5 +38,5 @@ export const fetchAlbumDetailsById = id => async dispatch => {
 };
 
 export const updateSearchAlbumTerm = term => {
-  return { type: UPDATE_SEARCH_TERM, payload: term };
+  return { type: constants.UPDATE_SEARCH_TERM, payload: term };
 };

@@ -1,18 +1,11 @@
-import {
-  FETCH_SINGLE_ARTIST,
-  FETCH_ARTIST_TOP_TRACKS,
-  FETCH_ARTIST_RELATED_ARTISTS
-} from './actionType';
-import {
-  getArtistById,
-  getArtistTopTracks,
-  getArtistRelatedArtists
-} from '../../data/network-utils/spotify/artist';
+import * as constants from './actionType';
+import * as requests from '../../data/network-utils/spotify/artist';
 
 export const fetchArtistById = id => async dispatch => {
-  await getArtistById(id)
+  await requests
+    .getArtistById(id)
     .then(response => {
-      dispatch({ type: FETCH_SINGLE_ARTIST, payload: response.data });
+      dispatch({ type: constants.FETCH_SINGLE_ARTIST, payload: response.data });
     })
     .catch(err => {
       console.log(err);
@@ -20,10 +13,11 @@ export const fetchArtistById = id => async dispatch => {
 };
 
 export const fetchArtistTopTracks = id => async dispatch => {
-  await getArtistTopTracks(id)
+  await requests
+    .getArtistTopTracks(id)
     .then(response => {
       dispatch({
-        type: FETCH_ARTIST_TOP_TRACKS,
+        type: constants.FETCH_ARTIST_TOP_TRACKS,
         payload: response.data.tracks
       });
     })
@@ -31,10 +25,11 @@ export const fetchArtistTopTracks = id => async dispatch => {
 };
 
 export const fetchArtistRelatedArtist = id => async dispatch => {
-  await getArtistRelatedArtists(id)
+  await requests
+    .getArtistRelatedArtists(id)
     .then(response => {
       dispatch({
-        type: FETCH_ARTIST_RELATED_ARTISTS,
+        type: constants.FETCH_ARTIST_RELATED_ARTISTS,
         payload: response.data.artists
       });
     })

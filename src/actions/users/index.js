@@ -1,11 +1,12 @@
-import { FETCH_LOGGED_IN_USER } from './actionType';
-import { getLoggedInUser } from '../../data/network-utils/spotify/users';
+import * as constants from './actionType';
+import * as requests from '../../data/network-utils/spotify/users';
 
 export const fetchLoggedInUserInfo = () => async dispatch => {
-  await getLoggedInUser()
+  await requests
+    .getLoggedInUser()
     .then(response => {
       dispatch({
-        type: FETCH_LOGGED_IN_USER,
+        type: constants.FETCH_LOGGED_IN_USER,
         payload: response.data
       });
     })
