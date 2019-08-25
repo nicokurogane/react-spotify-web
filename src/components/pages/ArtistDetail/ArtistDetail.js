@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  fetchArtistById,
-  fetchArtistTopTracks,
-  fetchArtistRelatedArtist
-} from '../../../actions/artists';
+import * as actions from '../../../actions/artists';
 import GenresList from '../../artist/genres-list/GenresList';
 import RelatedArtistList from '../../artist/related-artist-list/RelatedArtistsList';
 import TopTracksList from '../../artist/top-tracks-list/TopTracksList';
@@ -14,22 +10,18 @@ import './artist-detail.scss';
 
 class ConnectedArtistDetail extends React.Component {
   componentDidMount() {
-    const {
-      fetchArtistById,
-      fetchArtistTopTracks,
-      fetchArtistRelatedArtist
-    } = this.props;
-
+    const { fetchArtist, fetchTopTracks, fetchRelatedArtist } = this.props;
     const { id } = this.props.match.params;
 
-    fetchArtistById(id);
-    fetchArtistTopTracks(id);
-    fetchArtistRelatedArtist(id);
+    fetchArtist(id);
+    fetchTopTracks(id);
+    fetchRelatedArtist(id);
   }
 
   render() {
-    const { name, images = [], genres = [] } = this.props.selectedArtist;
-    const { topTracks, relatedArtists } = this.props;
+    const { topTracks, relatedArtists, selectedArtist } = this.props;
+    const { name, images = [], genres = [] } = selectedArtist;
+
     return (
       <div className="artist-detail-container">
         <TitleSection title={'Artist Detail'} />
@@ -58,9 +50,16 @@ const mapStateToProps = state => ({
   relatedArtists: state.artists.relatedArtists
 });
 
+const mapDispatchToProps = dispatch => ({
+  fetchArtist: artistId => dispatch(actions.fetchArtistById(artistId)),
+  fetchTopTracks: artistId => dispatch(actions.fetchArtistTopTracks(artistId)),
+  fetchRelatedArtist: artistId =>
+    dispatch(actions.fetchArtistRelatedArtist(artistId))
+});
+
 const ArtistDetail = connect(
   mapStateToProps,
-  { fetchArtistById, fetchArtistTopTracks, fetchArtistRelatedArtist }
+  mapDispatchToProps
 )(ConnectedArtistDetail);
 
 export default ArtistDetail;
