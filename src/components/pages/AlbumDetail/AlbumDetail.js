@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Card } from 'antd';
 import CustomLink from '../../custom-link/CustomLink';
-import TrackList from '../../tracks/List';
+import TrackList from '../../tracks/list/List';
 import { fetchAlbumDetailsById } from '../../../actions/albums';
 import TitleSection from '../../title-section/TitleSection';
 import LoadingSpinner from '../../loading-spinner/LoadingSpinner';
