@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Skeleton } from 'antd';
 import * as actions from '../../../actions/artists';
 import GenresList from '../../artist/genres-list/GenresList';
 import RelatedArtistList from '../../artist/related-artist-list/RelatedArtistsList';
@@ -18,25 +19,72 @@ class ConnectedArtistDetail extends React.Component {
     fetchRelatedArtist(id);
   }
 
+  renderErrorSection = section => {
+    return <div>{`Error loading section ${section}`}</div>;
+  };
+
+  renderSkeleton = () => {
+    return (
+      <div className="top-track-table">
+        <Skeleton active />
+      </div>
+    );
+  };
+
+  renderBasicInfo = () => {
+    const { name, images = [], genres = [] } = this.props.selectedArtist;
+    return (
+      <>
+        <div>
+          {images.length > 0 ? (
+            <img src={images[1].url} alt={name} className="artist-img" />
+          ) : null}
+        </div>
+        <div>
+          <span>{name}</span>
+          <GenresList genres={genres} />
+        </div>
+      </>
+    );
+  };
+
+  renderTopTracks = topTracks => {
+    return (
+      <div className="top-track-table">
+        <TopTracksList tracks={topTracks} />
+      </div>
+    );
+  };
+
   render() {
-    const { topTracks, relatedArtists, selectedArtist } = this.props;
-    const { name, images = [], genres = [] } = selectedArtist;
+    const {
+      topTracks,
+      relatedArtists,
+      selectedArtist,
+      isLoadingBasicInfo,
+      isLoadingTopTracks
+    } = this.props;
 
     return (
       <div className="artist-detail-container">
         <TitleSection title={'Artist Detail'} />
         <div className="basic-info-container">
-          <div>
-            {images.length > 0 ? (
-              <img src={images[1].url} alt={name} className="artist-img" />
-            ) : null}
-          </div>
-          <div className="artist-info">
-            <span>{name}</span>
-            <GenresList genres={genres} />
-            <TopTracksList tracks={topTracks} />
-          </div>
+          {isLoadingBasicInfo
+            ? this.renderSkeleton()
+            : !isLoadingBasicInfo &&
+              Object.getOwnPropertyNames(selectedArtist).length === 0
+            ? this.renderErrorSection('basic info')
+            : this.renderBasicInfo()}
         </div>
+        <div className="top-tracks">
+          <TitleSection title={'Top Tracks'} className="top-track-title" />
+          {isLoadingTopTracks
+            ? this.renderSkeleton()
+            : !isLoadingTopTracks && topTracks.length > 0
+            ? this.renderTopTracks(topTracks)
+            : this.renderErrorSection('top track')}
+        </div>
+        <div className="related-artist"></div>
 
         <RelatedArtistList artists={relatedArtists} />
       </div>
@@ -47,7 +95,9 @@ class ConnectedArtistDetail extends React.Component {
 const mapStateToProps = state => ({
   selectedArtist: state.artists.selected,
   topTracks: state.artists.selectedTopTracks,
-  relatedArtists: state.artists.relatedArtists
+  relatedArtists: state.artists.relatedArtists,
+  isLoadingBasicInfo: state.artists.isLoadingBasicInfo,
+  isLoadingTopTracks: state.artists.isLoadingTopTracks
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -25,18 +25,6 @@ const TopTracksList = ({ tracks }) => {
   return (
     <div className="top-tracks-list-container">
       <Table columns={columns} dataSource={data} size="small" />
-      {/*
-   
-    
-      tracks.map(track => {
-        const { name, popularity } = track;
-        return (
-          <div className="track">
-            <span>{name}</span>
-            <span>{popularity}</span>
-          </div>
-        );
-      })*/}
     </div>
   );
 };

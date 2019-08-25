@@ -17,17 +17,33 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 12vh;
-    margin-bottom: 12vh;
-    height: 100vh;
+    padding: 6vh 12vh;
 
     .artist-img {
-      height: 70vh;
+      height: 40vh;
       margin-right: 25vh;
     }
 
     .artist-info {
       height: 70vh;
+    }
+  }
+
+  .top-tracks {
+    .top-track-table {
+      padding: 0 12vh;
+
+      .ant-table-header-column {
+        color: $font-color;
+      }
+      .ant-table-body {
+        color: $font-color;
+        .ant-table-row {
+          &:hover {
+            background: $primary-color;
+          }
+        }
+      }
     }
   }
 }
