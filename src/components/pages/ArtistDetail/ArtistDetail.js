@@ -20,7 +20,7 @@ class ConnectedArtistDetail extends React.Component {
   }
 
   renderErrorSection = section => {
-    return <div>{`Error loading section ${section}`}</div>;
+    return <div>{`Error loading ${section} info :(`}</div>;
   };
 
   renderSkeleton = () => {
@@ -40,8 +40,8 @@ class ConnectedArtistDetail extends React.Component {
             <img src={images[1].url} alt={name} className="artist-img" />
           ) : null}
         </div>
-        <div>
-          <span>{name}</span>
+        <div className="artist-info">
+          <span className="artist-name">{name}</span>
           <GenresList genres={genres} />
         </div>
       </>
@@ -56,13 +56,22 @@ class ConnectedArtistDetail extends React.Component {
     );
   };
 
+  renderRelatedArtist = relatedArtists => {
+    return (
+      <div className="related-artists-container">
+        <RelatedArtistList artists={relatedArtists} />
+      </div>
+    );
+  };
+
   render() {
     const {
       topTracks,
       relatedArtists,
       selectedArtist,
       isLoadingBasicInfo,
-      isLoadingTopTracks
+      isLoadingTopTracks,
+      isLoadingRelatedArtist
     } = this.props;
 
     return (
@@ -84,9 +93,17 @@ class ConnectedArtistDetail extends React.Component {
             ? this.renderTopTracks(topTracks)
             : this.renderErrorSection('top track')}
         </div>
-        <div className="related-artist"></div>
-
-        <RelatedArtistList artists={relatedArtists} />
+        <div className="related-artist">
+          <TitleSection
+            title={'Related Artist'}
+            className="related-artist-title"
+          />
+          {isLoadingRelatedArtist
+            ? this.renderSkeleton()
+            : !isLoadingRelatedArtist && relatedArtists.length > 0
+            ? this.renderRelatedArtist(relatedArtists)
+            : this.renderErrorSection('related artist')}
+        </div>
       </div>
     );
   }
@@ -97,7 +114,8 @@ const mapStateToProps = state => ({
   topTracks: state.artists.selectedTopTracks,
   relatedArtists: state.artists.relatedArtists,
   isLoadingBasicInfo: state.artists.isLoadingBasicInfo,
-  isLoadingTopTracks: state.artists.isLoadingTopTracks
+  isLoadingTopTracks: state.artists.isLoadingTopTracks,
+  isLoadingRelatedArtist: state.artists.isLoadingRelatedArtist
 });
 
 const mapDispatchToProps = dispatch => ({

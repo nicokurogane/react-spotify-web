@@ -5,7 +5,7 @@ import './genres-list.scss';
 const GenresList = ({ genres }) => {
   return (
     <div className="genres-container">
-      <span>genres: </span>
+      <span className="title">genres: </span>
       {genres.map(genre => (
         <span className="genre" key={genre}>
           {genre}

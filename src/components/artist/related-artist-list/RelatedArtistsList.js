@@ -6,7 +6,6 @@ import './related-artist-list.scss';
 const RelatedArtistList = ({ artists }) => {
   return (
     <div className="related-artist-list-container">
-      <div className="section-title"> Related Artists</div>
       <div className="artists">
         {artists.map(artist => {
           const { name, images } = artist;

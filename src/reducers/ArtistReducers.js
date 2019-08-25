@@ -19,8 +19,12 @@ const artistReducers = (state = initialState, action) => {
         selectedTopTracks: action.payload,
         isLoadingTopTracks: false
       };
-    case constants.FETCH_ARTIST_RELATED_ARTISTS:
-      return { ...state, relatedArtists: action.payload };
+    case constants.FETCH_ARTIST_RELATED_ARTISTS_SUCCEDED:
+      return {
+        ...state,
+        relatedArtists: action.payload,
+        isLoadingRelatedArtist: false
+      };
     case constants.LOADING_ARTIST:
       return { ...state, isLoadingBasicInfo: true };
     case constants.LOADING_ARTIST_FAILED:
@@ -29,6 +33,10 @@ const artistReducers = (state = initialState, action) => {
       return { ...state, selectedTopTracks: [], isLoadingTopTracks: true };
     case constants.LOADING_TOP_TRACKS_FAILED:
       return { ...state, isLoadingTopTracks: false };
+    case constants.LOADING_RELATED_ARTISTS:
+      return { ...state, relatedArtists: [], isLoadingRelatedArtist: true };
+    case constants.LOADING_RELATED_ARTISTS_FAILED:
+      return { ...state, isLoadingRelatedArtist: false };
     default:
       return state;
   }

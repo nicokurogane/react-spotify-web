@@ -34,13 +34,17 @@ export const fetchArtistTopTracks = id => async dispatch => {
 };
 
 export const fetchArtistRelatedArtist = id => async dispatch => {
+  dispatch({ type: constants.LOADING_RELATED_ARTISTS });
   await requests
     .getArtistRelatedArtists(id)
     .then(response => {
       dispatch({
-        type: constants.FETCH_ARTIST_RELATED_ARTISTS,
+        type: constants.FETCH_ARTIST_RELATED_ARTISTS_SUCCEDED,
         payload: response.data.artists
       });
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: constants.LOADING_RELATED_ARTISTS_FAILED });
+    });
 };
