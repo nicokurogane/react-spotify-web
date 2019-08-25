@@ -44,13 +44,13 @@ class ConnectedAlbumDetail extends React.Component {
       <>
         <TitleSection title={'Album Detail'} />
         <div className="main-panel">
-          <Row type="flex" justify="center">
-            <Col span={12}>
+          <Row type="flex" justify="space-around">
+            <Col>
               {images.length > 0 ? (
                 <img src={images[0].url} alt="album" className="carousel-img" />
               ) : null}
             </Col>
-            <Col span={12}>
+            <Col>
               <Card
                 style={{
                   color: '#ffffff',
