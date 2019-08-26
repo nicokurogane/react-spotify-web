@@ -9,5 +9,6 @@ To run this project, you'll need to add an .env file to the root folder with the
 REACT_APP_CLIENT_ID=YOUR_CLIENT_ID_HERE
 REACT_APP_CLIENT_SECRET=YOUR_CLIENT_SECRET_HERE
 REACT_APP_SPOTIFY_BASE_URL=https://api.spotify.com/v1
+REACT_APP_REDIRECT_URI=THE_URL_USED_IN_THE_SETTING_OPTIONS_INSIDE_THE_DASHBOARD
 
 after that you can run **yarn install** or **npm install**, then run **yarn start** or **npm start**
