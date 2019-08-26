@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
+import { Link } from 'react-router-dom';
 import ProfileAvatar from '../user/profile-avatar/ProfileAvatar';
 
 import spotifyLogo from '../../assets/Spotify_logo_with_text.svg';
@@ -16,7 +17,12 @@ const LayoutApp = ({ children }) => {
           <div>
             <img src={spotifyLogo} className="header-logo" alt="header logo" />
           </div>
-          <ProfileAvatar />
+          <div className="right-side-panel">
+            <Link to="/main" className="link">
+              home
+            </Link>
+            <ProfileAvatar />
+          </div>
         </Header>
         <Content className="content">{children}</Content>
         <Footer className="app-footer">

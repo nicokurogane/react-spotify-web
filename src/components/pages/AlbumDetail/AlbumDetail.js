@@ -4,6 +4,7 @@ import { Row, Col, Card } from 'antd';
 import CustomLink from '../../custom-link/CustomLink';
 import TrackList from '../../tracks/list/List';
 import { fetchAlbumDetailsById } from '../../../actions/albums';
+import LayoutApp from '../../layout-app/LayoutApp';
 import TitleSection from '../../title-section/TitleSection';
 import LoadingSpinner from '../../loading-spinner/LoadingSpinner';
 
@@ -100,6 +101,7 @@ class ConnectedAlbumDetail extends React.Component {
     const { isLoadingAlbum, album } = this.props;
 
     return (
+      <LayoutApp>
       <div className="album-detail-container">
         {isLoadingAlbum
           ? this.renderLoadingSpinner()
@@ -107,6 +109,7 @@ class ConnectedAlbumDetail extends React.Component {
           ? this.renderErrorPage()
           : this.renderAlbumDetail()}
       </div>
+      </LayoutApp>
     );
   }
 }

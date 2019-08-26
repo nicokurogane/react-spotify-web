@@ -6,6 +6,7 @@ import GenresList from '../../artist/genres-list/GenresList';
 import RelatedArtistList from '../../artist/related-artist-list/RelatedArtistsList';
 import TopTracksList from '../../artist/top-tracks-list/TopTracksList';
 import TitleSection from '../../title-section/TitleSection';
+import LayoutApp from '../../layout-app/LayoutApp';
 
 import './artist-detail.scss';
 
@@ -75,36 +76,38 @@ class ConnectedArtistDetail extends React.Component {
     } = this.props;
 
     return (
-      <div className="artist-detail-container">
-        <TitleSection title={'Artist Detail'} />
-        <div className="basic-info-container">
-          {isLoadingBasicInfo
-            ? this.renderSkeleton()
-            : !isLoadingBasicInfo &&
-              Object.getOwnPropertyNames(selectedArtist).length === 0
-            ? this.renderErrorSection('basic info')
-            : this.renderBasicInfo()}
+      <LayoutApp>
+        <div className="artist-detail-container">
+          <TitleSection title={'Artist Detail'} />
+          <div className="basic-info-container">
+            {isLoadingBasicInfo
+              ? this.renderSkeleton()
+              : !isLoadingBasicInfo &&
+                Object.getOwnPropertyNames(selectedArtist).length === 0
+              ? this.renderErrorSection('basic info')
+              : this.renderBasicInfo()}
+          </div>
+          <div className="top-tracks">
+            <TitleSection title={'Top Tracks'} className="top-track-title" />
+            {isLoadingTopTracks
+              ? this.renderSkeleton()
+              : !isLoadingTopTracks && topTracks.length > 0
+              ? this.renderTopTracks(topTracks)
+              : this.renderErrorSection('top track')}
+          </div>
+          <div className="related-artist">
+            <TitleSection
+              title={'Related Artists'}
+              className="related-artist-title"
+            />
+            {isLoadingRelatedArtist
+              ? this.renderSkeleton()
+              : !isLoadingRelatedArtist && relatedArtists.length > 0
+              ? this.renderRelatedArtist(relatedArtists)
+              : this.renderErrorSection('related artist')}
+          </div>
         </div>
-        <div className="top-tracks">
-          <TitleSection title={'Top Tracks'} className="top-track-title" />
-          {isLoadingTopTracks
-            ? this.renderSkeleton()
-            : !isLoadingTopTracks && topTracks.length > 0
-            ? this.renderTopTracks(topTracks)
-            : this.renderErrorSection('top track')}
-        </div>
-        <div className="related-artist">
-          <TitleSection
-            title={'Related Artist'}
-            className="related-artist-title"
-          />
-          {isLoadingRelatedArtist
-            ? this.renderSkeleton()
-            : !isLoadingRelatedArtist && relatedArtists.length > 0
-            ? this.renderRelatedArtist(relatedArtists)
-            : this.renderErrorSection('related artist')}
-        </div>
-      </div>
+      </LayoutApp>
     );
   }
 }

@@ -12,6 +12,18 @@
       display: flex;
       justify-content: space-between;
 
+      .right-side-panel {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .link {
+          color: $font-color;
+          padding-right: 3vh;
+        }
+      }
+
       .header-logo {
         height: 4vh;
       }
