@@ -1,4 +1,5 @@
 import * as constants from '../actions/artists/actionType';
+import * as userConstants from '../actions/users/actionType';
 
 const initialState = {
   selected: {},
@@ -37,6 +38,8 @@ const artistReducers = (state = initialState, action) => {
       return { ...state, relatedArtists: [], isLoadingRelatedArtist: true };
     case constants.LOADING_RELATED_ARTISTS_FAILED:
       return { ...state, isLoadingRelatedArtist: false };
+    case userConstants.LOG_OUT_USER:
+      return initialState;
     default:
       return state;
   }

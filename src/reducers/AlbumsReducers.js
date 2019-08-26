@@ -1,4 +1,5 @@
 import * as constants from '../actions/albums/actionType';
+import * as userConstants from '../actions/users/actionType';
 
 const initialState = {
   list: [],
@@ -19,6 +20,8 @@ const albumReducers = (state = initialState, action) => {
       return { ...state, isLoadingAlbums: true };
     case constants.LOADING_ALBUMS_FAILED:
       return { ...state, isLoadingAlbums: false };
+    case userConstants.LOG_OUT_USER:
+      return initialState;
     default:
       return state;
   }
