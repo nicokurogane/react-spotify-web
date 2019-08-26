@@ -23,8 +23,40 @@
     }
 
     .app-footer {
-      background-color: $secondary-color;
+      background-color: $primary-color;
       color: #ffffff;
+
+      .footer-logo {
+        height: 4vh;
+      }
+
+      .main-info {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 3vh;
+
+          .info-title {
+            color: #99958a;
+            font-weight: 900;
+            align-self: flex-start;
+          }
+        }
+      }
+      .additional-link-container {
+        margin-top: 5vh;
+        width: 100%;
+        .addition-link {
+          color: $font-color;
+          margin-right: 1vw;
+        }
+      }
     }
   }
 }
