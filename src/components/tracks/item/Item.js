@@ -1,13 +1,12 @@
 import React from 'react';
 import './item.scss';
 
-const Item = ({ name, duration, explicit }) => {
+const Item = ({ name, duration }) => {
   return (
     <div className="track-item">
       <div>{name}</div>
       <div>
         <span>{millisecondsToMinutesAndSeconds(duration)}</span>
-        <span>{explicit ? 'explicit version' : null}</span>
       </div>
     </div>
   );

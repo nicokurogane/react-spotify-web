@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import PrivateRoute from './components/routes/PrivateRoute';
+
 import spotifyReducers from './reducers';
 
 import './index.css';
@@ -33,10 +35,10 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route path="/login" exact component={Login} />
-          <Route path="/main" exact component={Main} />
-          <Route path="/album-detail/:id" component={AlbumDetail} />
-          <Route path="/artist-detail/:id" component={ArtistDetail} />
-          <Route path="/user-detail" component={UserDetail} />
+          <PrivateRoute path="/main" exact component={Main} />
+          <PrivateRoute path="/album-detail/:id" component={AlbumDetail} />
+          <PrivateRoute path="/artist-detail/:id" component={ArtistDetail} />
+          <PrivateRoute path="/user-detail" component={UserDetail} />
           <Route path="/" exact component={Home} />
         </Switch>
       </App>
