@@ -52,9 +52,11 @@ class Login extends React.Component {
     return (
       <div className="login-container">
         <img src={spotifyLogo} alt="spotify" className="logo" />
+        <p>Music for everyone</p>
+        <p>Millons of songs. No credit card needed</p>
         {!this.state.token && (
           <a
-            className="btn btn--loginApp-link"
+            className="login-button"
             href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
               '%20'
             )}&response_type=token&show_dialog=true`}
